@@ -1,0 +1,15 @@
+Cai gi:Dua hau:Su tich,Sinh to,Vi ngot mat,Mai An Tiem,Ho bau bi,Ruot do,Vo cung,Thoi Hung Vuong,Hat mau den$
+Ai:Lang Lieu:Banh chung,Len ngoi vua,Su tich,Hoang tu thu 18,Chon nguoi noi ngoi,Quan Lang,Tet nguyen dan,Hung Vuong doi thu VI,Banh day$
+Ai:Trang Quynh:The ky 18,Choi chu,Da kich,Chua Trinh,Mam da,Tieu lam,Di dom,Lieu Hanh,Thanh Hoa$
+Ai:Han Mac Tu:Lang man,Ban thanh tu huu,Phim truyen hinh,Day thon Vi Da,Benh phong,Chang trai but nghien,Nguyen Trong Tri,Nha thuong Quy Hoa,Phong Tran$
+Cai gi:Phao hoa:Phan ung hoa hoc,San xuat cong nghiep,2 thanh phan,Thuoc phong,Giao thua,Nhieu mau sac,Doc hai,Da Nang,Hieu ung hinh khoi$
+Cai gi:Mua:Nhieu dang,Nguon song,Vong tuan hoan,Cam hung sang tac,Ngung tu hoi nuoc,O/Du,Ngap,Sam,Uot$
+Cai gi:Bach tuoc:Thong minh,Than mem,Phun muc,3 trai tim,Paul tien tri,8 chi dang xuc tu,He than kinh phuc tap,Bo,Mot so co doc$
+O dau:Mong Co:Khong giap bien,Mat do dan cu thap,An Tet Am lich,Thao nguyen,Con duong to lua,Ruou sua ngua,Ulan Bator,Du muc,Thanh Cat Tu Han%
+O dau:Venezuela:Nguon dau mo doi dao,Tieng Tay Ban Nha,Nam My,Bolivar,Cuong quoc sac dep,Hugo Chavez,Le hoi hoa trang Carupano,Caracas,Thac Angel$
+O dau:Chau Nam Cuc:The ky XIX,Hon 14 trieu km2,Khong thuoc chu quyen quoc gia nao,Kho han,Cuc gio cua the gio,Chim canh cut,90% luong bang tren trai dat,Noi lanh nhat tren trai dat,Thu hut du lich$
+Cai gi:Cay Neu:Tet Nguyen Dan,Bieu tuong su uy quyen,Su tich,Trong truoc nha,Tru quy,23 thang chap,La phuon,Tre,Trang phao$
+Cai gi:Doi dep:Nhieu chat lieu,Thoi trang,Mau sac da dang,2,Cao su,Chan,Quai,Nguyen Trung Kien,To ong$
+Ai:Nguyen Nhat Anh:Huy chuong Vi the he tre,Thanh nien xung phong,Giai thuong van hoc ASEAN,Phim truyen hinh,De tai thanh thieu nien,Toi thay hoa vang tren co xanh,Quang Nam,Kinh Van Hoa,Chu Dinh Ngan$
+Ai:To Hieu:Bi day di Con Dao,Hung Yen,Dat ten duong,Nha tu Son La,Bi biet giam,Dang Cong san Dong Duong,1912-1944,Nghia trang Vuon oi,Cay dao$
+Cai gi:May anh:Pin,Nut,Hen gio,Bo nho,Ong kinh,Hinh anh tinh,Chup anh,Nghe thuat,Den flash$
