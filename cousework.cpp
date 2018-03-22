@@ -134,7 +134,7 @@ void view (string typeofword, string word, int pointforguess[10], bool boolpoint
     SetConsoleTextAttribute(color,43);
     for (int i=0;i<=9;i++)
         {
-            gotoxy(21-(suggetword[i].size())/2,3+i);
+            gotoxy(27-(suggetword[i].size())/2,3+i);
             if (boolsuggetword[i]==true)
                 cout<<suggetword[i]<<endl;
             else
