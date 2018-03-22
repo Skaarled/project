@@ -11,7 +11,9 @@ string keyword (int level)
     char data[200];
     string word;
     srand(time(NULL));
-    int random=rand()%(3+3*(level-1))+(1+3*(level-1));
+    int x=3+3*(level-1);
+    int y=1+3*(level-1);
+    int random=y+rand()%(x-y+1);
     ifstream infile;
     infile.open("keyword.txt");
     while (random--!=0)
@@ -22,6 +24,7 @@ string keyword (int level)
             word=word+data[i];
             i++;
         }
+    infile.close();
     return word;
 }
 void pointforrecomendation (int level,int pointforguess[10])
@@ -90,6 +93,7 @@ int point(int level)
         return 990;
     if (level==5)
         return 1170;
+    return 0;
 }
 string toupperstr(string s)
 {
@@ -112,12 +116,15 @@ void view (string typeofword, string word, int pointforguess[10], bool boolpoint
 {
     HANDLE color;
     color= GetStdHandle(STD_OUTPUT_HANDLE);
+    gotoxy(0,1);
     SetConsoleTextAttribute(color,15);
-    cout<<typeofword<<"        ";
+    cout<<typeofword;
+    gotoxy(38-(word.size())/2,1);
     SetConsoleTextAttribute(color,43);
     cout<<"   "<<word<<"   ";
     SetConsoleTextAttribute(color,15);
-    cout<<"        Diem con lai: ";
+    gotoxy(78,1);
+    cout<<"Diem con lai: ";
     SetConsoleTextAttribute(color,12);
     cout<<pointlevel;
     SetConsoleTextAttribute(color,15);
@@ -173,20 +180,20 @@ int main ()
     HANDLE color;
     color= GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(color,15);
-    int level=1,totalpoint=0,round=5;
-    while (level<=round)
+    int level,totalpoint=0,round=5,turn=5;
+    for (level=1;level<=round;level++)
     {
-    bool gameend=false;
     int pointlevel=point(level);
     int pointforguess[10];
     bool boolpointforguess[10];
     bool boolsuggetword[10];
     bool boolpoint[10];
-    string suggetword[10], typeofword, word;
-    toword(keyword(level), &word);
-    type(keyword(level), &typeofword);
+    string suggetword[10], typeofword, word,key;
+    key=keyword(level);
+    toword(key, &word);
+    type(key, &typeofword);
     pointforrecomendation(level, pointforguess);
-    suggetion(keyword(level),suggetword);
+    suggetion(key,suggetword);
     for (int i=1;i<=9;i++)
     {
         boolpointforguess[i]=false;
@@ -206,7 +213,6 @@ int main ()
                 }
             if (num==0||chose==10)
             {
-                gameend=true;
                 cout<<"Cau tra loi cua ban la: ";
                 SetConsoleTextAttribute(color,10);
                 string answer;
@@ -252,14 +258,15 @@ int main ()
             system("cls");
         }
         cin.get();
-        system("cls");
         cout<<"Tong diem sau vong "<<level<<" : "<<totalpoint;
-        if (level==round)
-            return 0;
         cout<<"\nEnter de tiep tuc!";
         cin.get();
         system("cls");
-        cout<<"Loading.";Sleep(500);system("cls");cout<<"Loading..";Sleep(500);system("cls");cout<<"Loading...";Sleep(500);system("cls");
-        level++;
+        turn--;
+        if (turn==0)
+        {
+            cout<<"Tong diem: "<<totalpoint;
+            return 0;
+        }
     }
 }
