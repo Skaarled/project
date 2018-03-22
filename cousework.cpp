@@ -119,22 +119,22 @@ void view (string typeofword, string word, int pointforguess[10], bool boolpoint
     gotoxy(0,1);
     SetConsoleTextAttribute(color,15);
     cout<<typeofword;
-    gotoxy(38-(word.size())/2,1);
+    gotoxy(23-(word.size())/2,1);
     SetConsoleTextAttribute(color,43);
     cout<<"   "<<word<<"   ";
     SetConsoleTextAttribute(color,15);
-    gotoxy(78,1);
+    gotoxy(48,1);
     cout<<"Diem con lai: ";
     SetConsoleTextAttribute(color,12);
     cout<<pointlevel;
     SetConsoleTextAttribute(color,15);
     cout<<endl;
-    gotoxy(39,3);
+    gotoxy(24,3);
     cout<<"GOI Y";
     SetConsoleTextAttribute(color,43);
     for (int i=0;i<=9;i++)
         {
-            gotoxy(41-(suggetword[i].size())/2,3+i);
+            gotoxy(21-(suggetword[i].size())/2,3+i);
             if (boolsuggetword[i]==true)
                 cout<<suggetword[i]<<endl;
             else
@@ -148,9 +148,9 @@ void view (string typeofword, string word, int pointforguess[10], bool boolpoint
         pointforguesstem[i]=pointforguess[i];
         gotoxy(6,i+3);
         cout<<"|";
-        gotoxy(77,i+3);
+        gotoxy(47,i+3);
         cout<<"|";
-        gotoxy(80,3+i);
+        gotoxy(50,3+i);
         cout<<"So "<<i;
         if (boolpointforguess[i]==true)
             cout<<": "<<pointforguess[i]<<endl;
@@ -204,7 +204,7 @@ int main ()
         {
             cout<<"Vong: "<<level<<endl;
             view(typeofword, "?", pointforguess, boolpointforguess, suggetword, boolsuggetword, pointlevel, boolpoint);
-            cout<<"----------------------------------------------------------------------------------------\n\n"<<"Chon so 0 de tra loi tu khoa!\n";
+            cout<<"-----------------------------------------------------------------\n\n"<<"Chon so 0 de tra loi tu khoa!\n";
             int num;
             if (chose!=10)
                 {
