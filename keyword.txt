@@ -10,6 +10,6 @@ O dau:Venezuela:Nguon dau mo doi dao,Tieng Tay Ban Nha,Nam My,Bolivar,Cuong quoc
 O dau:Chau Nam Cuc:The ky XIX,Hon 14 trieu km2,Khong thuoc chu quyen quoc gia nao,Kho han,Cuc gio cua the gio,Chim canh cut,90% luong bang tren trai dat,Noi lanh nhat tren trai dat,Thu hut du lich$
 Cai gi:Cay Neu:Tet Nguyen Dan,Bieu tuong su uy quyen,Su tich,Trong truoc nha,Tru quy,23 thang chap,La phuon,Tre,Trang phao$
 Cai gi:Doi dep:Nhieu chat lieu,Thoi trang,Mau sac da dang,2,Cao su,Chan,Quai,Nguyen Trung Kien,To ong$
-Ai:Nguyen Nhat Anh:Huy chuong Vi the he tre,Thanh nien xung phong,Giai thuong van hoc ASEAN,Phim truyen hinh,De tai thanh thieu nien,Toi thay hoa vang tren co xanh,Quang Nam,Kinh Van Hoa,Chu Dinh Ngan$
+Ai:To Huu:Giai thuong HCM,Tu day,Chinh tri gia,Bi thu tinh uy,Tho cach mang,Nguoi ban trong sang,Tu ay,Thua Thien Hue,Nguyen Kim Thanh$
 Ai:To Hieu:Bi day di Con Dao,Hung Yen,Dat ten duong,Nha tu Son La,Bi biet giam,Dang Cong san Dong Duong,1912-1944,Nghia trang Vuon oi,Cay dao$
 Cai gi:May anh:Pin,Nut,Hen gio,Bo nho,Ong kinh,Hinh anh tinh,Chup anh,Nghe thuat,Den flash$
