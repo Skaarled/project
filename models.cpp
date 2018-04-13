@@ -1,6 +1,6 @@
 #include "models.h"
 
-string makeKeyWord (int level)
+string getKeyWord (int level)
 {
     char data[200];
     string word;
@@ -21,7 +21,7 @@ string makeKeyWord (int level)
     infile.close();
     return word;
 }
-void makePointOfRecomendation (int level,int pointOfGuess[10])
+void getPointOfRecomendation (int level,int pointOfGuess[10])
 {
     int randomPoint,t=0;
     bool i[10]; for (int tem=1;tem<=9;tem++) i[tem]=false;
@@ -38,7 +38,7 @@ void makePointOfRecomendation (int level,int pointOfGuess[10])
         i[randomPoint]=true;
     }
 }
-void makeSuggetion (string keyWord, string suggetWord[10])
+void getSuggetion (string keyWord, string suggetWord[10])
 {
     int test=0,i=1;
     for (int tem=0;tem<keyWord.size();tem++)
@@ -63,7 +63,7 @@ void findType (string keyWord, string *typeOfKeyWord)
         tem++;
     }
 }
-void makeWord(string keyWord, string *word)
+void getWord(string keyWord, string *word)
 {
     int tem=0;
     while (keyWord[tem]!=':')
@@ -75,7 +75,7 @@ void makeWord(string keyWord, string *word)
             tem++;
         }
 }
-int makePoint(int level)
+int getPoint(int level)
 {
     if (level==1)
         return 450;
