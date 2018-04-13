@@ -1,6 +1,6 @@
 #include "models.h"
 
-string keyWord (int level)
+string makeKeyWord (int level)
 {
     char data[200];
     string word;
@@ -21,7 +21,7 @@ string keyWord (int level)
     infile.close();
     return word;
 }
-void pointForRecomendation (int level,int pointForGuess[10])
+void makePointOfRecomendation (int level,int pointOfGuess[10])
 {
     int randompoint,t=0;
     bool i[10]; for (int tem=1;tem<=9;tem++) i[tem]=false;
@@ -34,11 +34,11 @@ void pointForRecomendation (int level,int pointForGuess[10])
             break;
         while (i[randompoint]==true)
             randompoint=rand()%9+1;
-        pointForGuess[randompoint]=point;
+        pointOfGuess[randompoint]=point;
         i[randompoint]=true;
     }
 }
-void suggetion (string keyWord, string suggetWord[10])
+void makeSuggetion (string keyWord, string suggetWord[10])
 {
     int test=0,i=1;
     for (int tem=0;tem<keyWord.size();tem++)
@@ -54,7 +54,7 @@ void suggetion (string keyWord, string suggetWord[10])
         }
     }
 }
-void type (string keyWord, string *typeOfKeyWord)
+void findType (string keyWord, string *typeOfKeyWord)
 {
     int tem=0;
     while (keyWord[tem]!=':')
@@ -63,7 +63,7 @@ void type (string keyWord, string *typeOfKeyWord)
         tem++;
     }
 }
-void toWord(string keyWord, string *word)
+void makeWord(string keyWord, string *word)
 {
     int tem=0;
     while (keyWord[tem]!=':')
@@ -75,7 +75,7 @@ void toWord(string keyWord, string *word)
             tem++;
         }
 }
-int point(int level)
+int makePoint(int level)
 {
     if (level==1)
         return 450;
@@ -89,7 +89,7 @@ int point(int level)
         return 1170;
     return 0;
 }
-string toupperAnswer(string s)
+string toUpperAnswer(string s)
 {
     string str;
     for (int i=0;i<s.size();i++)
