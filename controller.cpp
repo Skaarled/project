@@ -29,7 +29,7 @@ int main ()
         {
             cout<<"Vong: "<<level<<endl;
             printScreen(typeOfWord, "?", pointOfGuess, boolPointOfGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-            cout<<"-----------------------------------------------------------------\n\n"<<"Chon so 0 de tra loi tu khoa!\n";
+            cout<<"__________________________________________________________\n\n"<<"Chon so 0 de tra loi tu khoa!\n";
             int num;
             string temAnswer;
             if (choise!=10)
