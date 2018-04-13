@@ -23,19 +23,19 @@ string makeKeyWord (int level)
 }
 void makePointOfRecomendation (int level,int pointOfGuess[10])
 {
-    int randompoint,t=0;
+    int randomPoint,t=0;
     bool i[10]; for (int tem=1;tem<=9;tem++) i[tem]=false;
     srand(time(NULL));
-    randompoint=rand()%9+1;
+    randomPoint=rand()%9+1;
     for (int point=10;;point=point+10+(level-1)*5)
     {
         t++;
         if (t==10)
             break;
-        while (i[randompoint]==true)
-            randompoint=rand()%9+1;
-        pointOfGuess[randompoint]=point;
-        i[randompoint]=true;
+        while (i[randomPoint]==true)
+            randomPoint=rand()%9+1;
+        pointOfGuess[randomPoint]=point;
+        i[randomPoint]=true;
     }
 }
 void makeSuggetion (string keyWord, string suggetWord[10])
