@@ -1,5 +1,5 @@
 #include "view.h"
-void view (string typeOfWord, string word, int pointForGuess[10], bool boolPointForGuess[10], string suggetWord[10], bool boolSuggetWord[10],int pointLevel, bool boolPoint[10])
+void printScreen (string typeOfWord, string word, int pointOfGuess[10], bool boolPointOfGuess[10], string suggetWord[10], bool boolSuggetWord[10],int pointLevel, bool boolPoint[10])
 {
     HANDLE color;
     color= GetStdHandle(STD_OUTPUT_HANDLE);
@@ -29,37 +29,36 @@ void view (string typeOfWord, string word, int pointForGuess[10], bool boolPoint
         }
     SetConsoleTextAttribute(color,15);
     cout<<endl;
-    int pointForGuessTEM[10];
+    int pointOfGuessTEM[10];
     for (int i=1;i<=9;i++)
     {
-        pointForGuessTEM[i]=pointForGuess[i];
+        pointOfGuessTEM[i]=pointOfGuess[i];
         gotoXY(6,i+3);
         cout<<"|";
         gotoXY(47,i+3);
         cout<<"|";
         gotoXY(50,3+i);
         cout<<"So "<<i;
-        if (boolPointForGuess[i]==true)
-            cout<<": "<<pointForGuess[i]<<endl;
+        if (boolPointOfGuess[i]==true)
+            cout<<": "<<pointOfGuess[i]<<endl;
         else
             cout<<endl;
     }
-    sort(pointForGuessTEM+1,pointForGuessTEM+10);
+    sort(pointOfGuessTEM+1,pointOfGuessTEM+10);
     for (int i=1;i<=9;i++)
     {
         gotoXY(2,i+3);
-        if (boolPoint[pointForGuessTEM[i]]==false)
+        if (boolPoint[pointOfGuessTEM[i]]==false)
         {
             SetConsoleTextAttribute(color,10);
-            cout<<pointForGuessTEM[i]<<endl;
+            cout<<pointOfGuessTEM[i]<<endl;
         }
         else
         {
             SetConsoleTextAttribute(color,12);
-            cout<<pointForGuessTEM[i]<<endl;
+            cout<<pointOfGuessTEM[i]<<endl;
         }
     }
     SetConsoleTextAttribute(color,15);
     cout<<endl;
 }
-
