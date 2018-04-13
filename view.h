@@ -1,6 +1,5 @@
 #ifndef VIEW_H
 #define VIEW_H
 #include "models.h"
-void view (string typeOfWord, string word, int pointForGuess[10], bool boolPointForGuess[10], string suggetWord[10], bool boolSuggetWord[10],int pointLevel, bool boolPoint[10]);
-
+void printScreen (string typeOfWord, string word, int pointOfGuess[10], bool boolPointOfGuess[10], string suggetWord[10], bool boolSuggetWord[10],int pointLevel, bool boolPoint[10]);
 #endif // VIEW_H
