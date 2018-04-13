@@ -8,17 +8,17 @@ int main ()
     int level,totalPoint=0,round=5,turn=5;
     for (level=1;level<=round;level++)
     {
-    int pointLevel=makePoint(level);
+    int pointLevel=getPoint(level);
     int pointOfGuess[10];
     bool boolPointOfGuess[10];
     bool boolSuggetWord[10];
     bool boolPoint[10];
     string suggetWord[10], typeOfWord, word,key;
-    key=makeKeyWord(level);
-    makeWord(key, &word);
+    key=getKeyWord(level);
+    getWord(key, &word);
     findType(key, &typeOfWord);
-    makePointOfRecomendation(level, pointOfGuess);
-    makeSuggetion(key,suggetWord);
+    getPointOfRecomendation(level, pointOfGuess);
+    getSuggetion(key,suggetWord);
     for (int i=1;i<=9;i++)
     {
         boolPointOfGuess[i]=false;
