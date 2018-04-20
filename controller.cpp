@@ -8,56 +8,56 @@ int main ()
     int level,totalPoint=0,round=5,turn=5;
     for (level=1;level<=round;level++)
     {
-    int pointLevel=getPoint(level);
-    int pointOfGuess[10];
-    bool boolPointOfGuess[10];
+    int pointLevel=point(level);
+    int pointForGuess[10];
+    bool boolPointForGuess[10];
     bool boolSuggetWord[10];
     bool boolPoint[10];
     string suggetWord[10], typeOfWord, word,key;
-    key=getKeyWord(level);
-    getWord(key, &word);
-    findType(key, &typeOfWord);
-    getPointOfRecomendation(level, pointOfGuess);
-    getSuggetion(key,suggetWord);
+    key=keyWord(level);
+    toWord(key, &word);
+    type(key, &typeOfWord);
+    pointForRecomendation(level, pointForGuess);
+    suggetion(key,suggetWord);
     for (int i=1;i<=9;i++)
     {
-        boolPointOfGuess[i]=false;
+        boolPointForGuess[i]=false;
         boolSuggetWord[i]=false;
-        boolPoint[pointOfGuess[i]]=false;
+        boolPoint[pointForGuess[i]]=false;
     }
-        for (int choise=1;choise<=10;choise++)
+        for (int chose=1;chose<=10;chose++)
         {
-            cout<<"Vong: "<<level<<endl;
-            printScreen(typeOfWord, "?", pointOfGuess, boolPointOfGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-            cout<<"__________________________________________________________\n\n"<<"Chon so 0 de tra loi tu khoa!\n";
+            printDetails(level,typeOfWord, "????????", pointForGuess, boolPointForGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
+            cout<<"Chon so 0 de tra loi tu khoa!\n";
             int num;
-            string temAnswer;
-            if (choise!=10)
+            string strNum;
+            if (chose!=10)
                 {
-                    cout<<"Ban muon chon so: ";
-                    cin>>temAnswer;
-                    while ( (int)temAnswer[0]<48|| (int)temAnswer[0]>57)
+                    cout<<"\nBAN MUON CHON SO: ";
+                    cin>>strNum;
+                    while (((int)strNum[0]-48)<0||((int)strNum[0]-48)>9)
                     {
-                        cout<<"Ban muon chon so: ";
-                        cin>>temAnswer;
+                        cout<<"\nBAN MUON CHON SO: ";
+                        cin.ignore();
+                        cin>>strNum;
                     }
-                    num= (int)temAnswer[0]-48;
+                    num=(int)strNum[0]-48;
                 }
-            if (num==0||choise==10)
+            if (num==0||chose==10)
             {
-                cout<<"Cau tra loi cua ban la: ";
+                cout<<"CAU TRA LOI CUA BAN LA: ";
                 SetConsoleTextAttribute(color,10);
                 string answer;
                 cin.ignore();
                 getline(cin,answer);
                 SetConsoleTextAttribute(color,15);
-                if (toUpperAnswer(word)==toUpperAnswer(answer))
+                if (toupperStr(word)==toupperStr(answer))
                 {
                     totalPoint+=pointLevel;
                     system("cls");
                     for (int i=1;i<=9;i++)
                         boolSuggetWord[i]=true;
-                    printScreen(typeOfWord, word, pointOfGuess, boolPointOfGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
+                    printDetails(level,typeOfWord, word, pointForGuess, boolPointForGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
                     cout<<"\nCHINH XAC!\a";
                     break;
                 }
@@ -66,8 +66,8 @@ int main ()
                     system("cls");
                     for (int i=1;i<=9;i++)
                         boolSuggetWord[i]=true;
-                    printScreen(typeOfWord, word, pointOfGuess, boolPointOfGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-                    cout<<"\nBan da tra loi sai!\a";
+                    printDetails(level,typeOfWord, word, pointForGuess, boolPointForGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
+                    cout<<"\nDAP AN SAI!\a";
                     level--;
                     round--;
                     break;
@@ -75,16 +75,16 @@ int main ()
             }
             else
             {
-                while (boolPointOfGuess[num]==true||num<1||num>9)
+                while (boolPointForGuess[num]==true||num<1||num>9)
                 {
-                    cout<<"Hay chon lai!\nBan muon chon so: ";
+                    cout<<"HAY CHON LAI!\nBAN MUON CHON SO: ";
                     cin>>num;
                 }
-                boolPoint[pointOfGuess[num]]=true;
-                boolPointOfGuess[num]=true;
-                boolSuggetWord[choise]=true;
-                cout<<"Ban vua chon goi y so "<<num<<" voi "<<pointOfGuess[num]<<" diem!\n";
-                pointLevel-=pointOfGuess[num];
+                boolPoint[pointForGuess[num]]=true;
+                boolPointForGuess[num]=true;
+                boolSuggetWord[chose]=true;
+                cout<<"Ban vua chon goi y so "<<num<<" voi "<<pointForGuess[num]<<" diem!\n";
+                pointLevel-=pointForGuess[num];
             }
             Sleep(2000);
             system("cls");
@@ -102,3 +102,4 @@ int main ()
         }
     }
 }
+
