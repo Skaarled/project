@@ -1,5 +1,6 @@
 #include "models.h"
-string keyWord (int level)
+
+string getKeyWord (int level)
 {
     char data[200];
     string word;
@@ -8,7 +9,7 @@ string keyWord (int level)
     int y=1+3*(level-1);
     int random=y+rand()%(x-y+1);
     ifstream infile;
-    infile.open("keyword.txt");
+    infile.open("keyWord.txt");
     while (random--!=0)
         infile.getline(data,200);
     int i=0;
@@ -20,7 +21,7 @@ string keyWord (int level)
     infile.close();
     return word;
 }
-void pointForRecomendation (int level,int pointForGuess[10])
+void getPointOfRecomendation (int level,int pointOfGuess[10])
 {
     int randomPoint,t=0;
     bool i[10]; for (int tem=1;tem<=9;tem++) i[tem]=false;
@@ -33,11 +34,11 @@ void pointForRecomendation (int level,int pointForGuess[10])
             break;
         while (i[randomPoint]==true)
             randomPoint=rand()%9+1;
-        pointForGuess[randomPoint]=point;
+        pointOfGuess[randomPoint]=point;
         i[randomPoint]=true;
     }
 }
-void suggetion (string keyWord, string suggetWord[10])
+void getSuggetion (string keyWord, string suggetWord[10])
 {
     int test=0,i=1;
     for (int tem=0;tem<keyWord.size();tem++)
@@ -53,7 +54,7 @@ void suggetion (string keyWord, string suggetWord[10])
         }
     }
 }
-void type (string keyWord, string *typeOfKeyWord)
+void findType (string keyWord, string *typeOfKeyWord)
 {
     int tem=0;
     while (keyWord[tem]!=':')
@@ -62,7 +63,7 @@ void type (string keyWord, string *typeOfKeyWord)
         tem++;
     }
 }
-void toWord(string keyWord, string *word)
+void getWord(string keyWord, string *word)
 {
     int tem=0;
     while (keyWord[tem]!=':')
@@ -74,7 +75,7 @@ void toWord(string keyWord, string *word)
             tem++;
         }
 }
-int point(int level)
+int getPoint(int level)
 {
     if (level==1)
         return 450;
@@ -88,7 +89,7 @@ int point(int level)
         return 1170;
     return 0;
 }
-string toupperStr(string s)
+string toUpperAnswer(string s)
 {
     string str;
     for (int i=0;i<s.size();i++)
@@ -105,5 +106,3 @@ HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE) ;
 COORD position = {x,y} ;
 SetConsoleCursorPosition(hStdout,position ) ;
 }
-
-
