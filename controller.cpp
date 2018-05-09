@@ -2,71 +2,132 @@
 #include "view.h"
 int main ()
 {
-    HANDLE color;
-    color= GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(color,15);
+    setTextColor(15);
     int level,totalPoint=0,round=5,turn=5;
+    printStartScreen();
+    //bat dau vong lap 5 vong choi
     for (level=1;level<=round;level++)
     {
-    int pointLevel=getPoint(level);
-    int pointOfGuess[10];
-    bool boolPointOfGuess[10];
+    //khoi tao du lieu cua vong choi
+    int guessPoint[10];
+    bool boolGuessPoint[10];
     bool boolSuggetWord[10];
     bool boolPoint[10];
-    string suggetWord[10], typeOfWord, word,key;
+    string suggetWord[10], typeOfKeyWord, word,key;
+
+
+    int pointLevel=getPoint(level);
     key=getKeyWord(level);
     getWord(key, &word);
-    findType(key, &typeOfWord);
-    getPointOfRecomendation(level, pointOfGuess);
+    findType(key, &typeOfKeyWord);
+    getRecomendationPoint(level, guessPoint);
     getSuggetion(key,suggetWord);
+    ShowCur(false);
     for (int i=1;i<=9;i++)
     {
-        boolPointOfGuess[i]=false;
+        boolGuessPoint[i]=false;
         boolSuggetWord[i]=false;
-        boolPoint[pointOfGuess[i]]=false;
+        boolPoint[guessPoint[i]]=false;
     }
-        for (int choise=1;choise<=10;choise++)
+        //bat dau vong lap mua goi y
+    for (int choise=1;choise<=10;choise++)
+    {
+        printDetails(level,typeOfKeyWord, "?", guessPoint, boolGuessPoint, suggetWord, boolSuggetWord, pointLevel, boolPoint);
+        label:int num;
+        int temp=90;
+        bool isGetNumber = false;
+        while (!isGetNumber)
         {
-            printDetails(level,typeOfWord, "???????", pointOfGuess, boolPointOfGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-            cout<<"Chon so 0 de tra loi tu khoa!\n";
-            int num;
-            string temAnswer;
-            if (choise!=10)
+        if (kbhit())
+        {
+            char c=getch();
+            if (c==13)
                 {
-                    cout<<"Ban muon chon so: ";
-                    cin>>temAnswer;
-                    while ( (int)temAnswer[0]<48|| (int)temAnswer[0]>57)
-                    {
-                        cout<<"Ban muon chon so: ";
-                        cin>>temAnswer;
-                    }
-                    num= (int)temAnswer[0]-48;
+                    isGetNumber=true;
                 }
+            if (c==-32)
+            {
+                c=getch();
+                if (c==80)
+                    temp++;
+                if (c==72)
+                    temp--;
+            }
+        }
+        if (temp%10==0)
+            {
+            gotoXY(27,3);
+            setTextColor(58);
+            cout<<"   ?   ";
+            setTextColor(15);
+            gotoXY(58,7);
+            cout<<"So 1";
+            if (boolGuessPoint[1]==true)
+                cout<<": "<<guessPoint[1]<<endl;
+            gotoXY(58,15);
+            cout<<"So 9";
+            if (boolGuessPoint[9]==true)
+                cout<<": "<<guessPoint[9]<<endl;
+            }
+            else
+                {
+                    if (temp%10==1||temp%10==9)
+                    {
+                        gotoXY(27,3);
+                        setTextColor(10);
+                        cout<<"   ?   ";
+                    }
+                    setTextColor(63);
+                    gotoXY(58,6+temp%10);
+                    cout<<"So "<<temp%10;
+                    if (boolGuessPoint[temp%10]==true)
+                        cout<<": "<<guessPoint[temp%10]<<endl;
+                    setTextColor(15);
+                    if (temp%10!=1)
+                    {
+                        gotoXY(58,5+temp%10);
+                        cout<<"So "<<temp%10-1;
+                        if (boolGuessPoint[temp%10-1]==true)
+                            cout<<": "<<guessPoint[temp%10-1]<<endl;
+                    }
+                    if (temp%10+1!=10)
+                    {
+                        gotoXY(58,7+temp%10);
+                        cout<<"So "<<temp%10+1;
+                        if (boolGuessPoint[temp%10+1]==true)
+                            cout<<": "<<guessPoint[temp%10+1]<<endl;
+                    }
+                }
+        }
+            num=temp%10;
             if (num==0||choise==10)
             {
-                cout<<"Cau tra loi cua ban la: ";
-                SetConsoleTextAttribute(color,10);
+                ShowCur(true);
+                gotoXY(25,3); cout<<"           ";
+                gotoXY(25,3);
+                setTextColor(10);
                 string answer;
-                cin.ignore();
                 getline(cin,answer);
-                SetConsoleTextAttribute(color,15);
+                setTextColor(15);
                 if (toUpperAnswer(word)==toUpperAnswer(answer))
                 {
                     totalPoint+=pointLevel;
-                    system("cls");
                     for (int i=1;i<=9;i++)
                         boolSuggetWord[i]=true;
-                    printDetails(level,typeOfWord, word, pointOfGuess, boolPointOfGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-                    cout<<"\nCHINH XAC!\a";
+                    printDetails(level,typeOfKeyWord, word, guessPoint, boolGuessPoint, suggetWord, boolSuggetWord, pointLevel, boolPoint);
+                    gotoXY(20,20);
+                    setTextColor(10);
+                    cout<<"DAP AN DUNG!!";
+                    setTextColor(15);
                     break;
                 }
                 else
                 {
-                    system("cls");
-                    for (int i=1;i<=9;i++)
-                        boolSuggetWord[i]=true;
-                    printDetails(level,typeOfWord, word, pointOfGuess, boolPointOfGuess, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-                    cout<<"\nBan da tra loi sai!\a";
+                    printDetails(level,typeOfKeyWord, "   ?   ", guessPoint, boolGuessPoint, suggetWord, boolSuggetWord, pointLevel, boolPoint);
+                    gotoXY(20,20);
+                    setTextColor(12);
+                    cout<<"DAP AN SAI!!";
+                    setTextColor(15);
                     level--;
                     round--;
                     break;
@@ -74,19 +135,16 @@ int main ()
             }
             else
             {
-                while (boolPointOfGuess[num]==true||num<1||num>9)
+                while (boolGuessPoint[num]==true||num<1||num>9)
                 {
-                    cout<<"Hay chon lai!\nBan muon chon so: ";
-                    cin>>num;
+                    goto label;
                 }
-                boolPoint[pointOfGuess[num]]=true;
-                boolPointOfGuess[num]=true;
+                boolPoint[guessPoint[num]]=true;
+                boolGuessPoint[num]=true;
                 boolSuggetWord[choise]=true;
-                cout<<"Ban vua chon goi y so "<<num<<" voi "<<pointOfGuess[num]<<" diem!\n";
-                pointLevel-=pointOfGuess[num];
+                pointLevel-=guessPoint[num];
             }
-            Sleep(2000);
-            system("cls");
+            Sleep(500);
         }
         cin.get();
         cout<<"Tong diem sau vong "<<level<<" : "<<totalPoint;
