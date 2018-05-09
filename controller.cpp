@@ -3,25 +3,24 @@
 int main ()
 {
     setTextColor(15);
-    int level,totalPoint=0,round=5,turn=5;
+    int level=1,totalPoint=0;
     printStartScreen();
     //bat dau vong lap 5 vong choi
-    for (level=1;level<=round;level++)
-    {
-    //khoi tao du lieu cua vong choi
     int guessPoint[10];
     bool boolGuessPoint[10];
     bool boolSuggetWord[10];
-    bool boolPoint[10];
+    while (level<=5)
+    {
+    ShowCur(false);
+    //khoi tao du lieu cua vong choi
     string suggetWord[10], typeOfKeyWord, word,key;
-
-
     int pointLevel=getPoint(level);
     key=getKeyWord(level);
     getWord(key, &word);
     findType(key, &typeOfKeyWord);
     getRecomendationPoint(level, guessPoint);
     getSuggetion(key,suggetWord);
+    bool boolPoint[251];
     ShowCur(false);
     for (int i=1;i<=9;i++)
     {
@@ -32,8 +31,8 @@ int main ()
         //bat dau vong lap mua goi y
     for (int choise=1;choise<=10;choise++)
     {
-        printDetails(level,typeOfKeyWord, "?", guessPoint, boolGuessPoint, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-        label:int num;
+        label:printDetails(level,typeOfKeyWord, "?", guessPoint, boolGuessPoint, suggetWord, boolSuggetWord, pointLevel, boolPoint);
+        int num;
         int temp=90;
         bool isGetNumber = false;
         while (!isGetNumber)
@@ -103,7 +102,7 @@ int main ()
             if (num==0||choise==10)
             {
                 ShowCur(true);
-                gotoXY(25,3); cout<<"           ";
+                gotoXY(23,3); cout<<"               ";
                 gotoXY(25,3);
                 setTextColor(10);
                 string answer;
@@ -115,30 +114,32 @@ int main ()
                     for (int i=1;i<=9;i++)
                         boolSuggetWord[i]=true;
                     printDetails(level,typeOfKeyWord, word, guessPoint, boolGuessPoint, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-                    gotoXY(20,20);
+                    gotoXY(20,19);
                     setTextColor(10);
-                    cout<<"DAP AN DUNG!!";
+                    cout<<"DAP AN DUNG!!\n";
                     setTextColor(15);
                     break;
                 }
                 else
                 {
                     printDetails(level,typeOfKeyWord, "   ?   ", guessPoint, boolGuessPoint, suggetWord, boolSuggetWord, pointLevel, boolPoint);
-                    gotoXY(20,20);
+                    gotoXY(20,19);
                     setTextColor(12);
-                    cout<<"DAP AN SAI!!";
+                    cout<<"DAP AN SAI!!\n";
                     setTextColor(15);
-                    level--;
-                    round--;
                     break;
                 }
             }
             else
             {
-                while (boolGuessPoint[num]==true||num<1||num>9)
-                {
-                    goto label;
-                }
+                if (boolGuessPoint[num]==true)
+                    {
+                        setTextColor(15);
+                        gotoXY(58,6+num);
+                        cout<<"So "<<num;
+                        cout<<": "<<guessPoint[num]<<endl;
+                        goto label;
+                    }
                 boolPoint[guessPoint[num]]=true;
                 boolGuessPoint[num]=true;
                 boolSuggetWord[choise]=true;
@@ -146,16 +147,11 @@ int main ()
             }
             Sleep(500);
         }
-        cin.get();
+        getch();
         cout<<"Tong diem sau vong "<<level<<" : "<<totalPoint;
         cout<<"\nEnter de tiep tuc!";
-        cin.get();
+        getch();
+        level++;
         system("cls");
-        turn--;
-        if (turn==0)
-        {
-            cout<<"Tong diem: "<<totalPoint;
-            return 0;
-        }
     }
 }
