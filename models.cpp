@@ -2,7 +2,7 @@
 
 string getKeyWord (int level)
 {
-    char data[200];
+    char data[1000];
     string word;
     srand(time(NULL));
     int x=3+3*(level-1);
@@ -10,8 +10,11 @@ string getKeyWord (int level)
     int random=y+rand()%(x-y+1);
     ifstream infile;
     infile.open("keyWord.txt");
-    while (random--!=0)
-        infile.getline(data,200);
+    while (random!=0)
+        {
+            infile.getline(data,1000);
+            random--;
+        }
     int i=0;
     while (data[i]!='$')
         {
