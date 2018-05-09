@@ -21,7 +21,7 @@ string getKeyWord (int level)
     infile.close();
     return word;
 }
-void getPointOfRecomendation (int level,int pointOfGuess[10])
+void getRecomendationPoint (int level,int guessPoint[10])
 {
     int randomPoint,t=0;
     bool i[10]; for (int tem=1;tem<=9;tem++) i[tem]=false;
@@ -34,7 +34,7 @@ void getPointOfRecomendation (int level,int pointOfGuess[10])
             break;
         while (i[randomPoint]==true)
             randomPoint=rand()%9+1;
-        pointOfGuess[randomPoint]=point;
+        guessPoint[randomPoint]=point;
         i[randomPoint]=true;
     }
 }
@@ -106,3 +106,16 @@ HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE) ;
 COORD position = {x,y} ;
 SetConsoleCursorPosition(hStdout,position ) ;
 }
+void setTextColor(int colorNumber)
+{
+    HANDLE color;
+    color= GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(color,colorNumber);
+}
+void ShowCur(bool CursorVisibility)
+{
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cursor = {1, CursorVisibility};
+    SetConsoleCursorInfo(handle, &cursor);
+}
+
