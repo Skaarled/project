@@ -63,26 +63,24 @@ void printBackground ()
 void printDetails (int level,string typeOfWord, string word, int pointForGuess[10], bool boolPointForGuess[10], string suggetWord[10], bool boolSuggetWord[10],int pointLevel, bool boolPoint[10])
 {
     printBackground();
-    HANDLE color;
-    color= GetStdHandle(STD_OUTPUT_HANDLE);
-    gotoXY(32,0);
+    gotoXY(28,0);
     cout<<"VONG: "<<level<<endl;
     gotoXY(4-(typeOfWord.size())/2,5);
-    SetConsoleTextAttribute(color,15);
+    setTextColor(15);
     cout<<typeOfWord;
     gotoXY(27-(word.size())/2,3);
-    SetConsoleTextAttribute(color,11);
+    setTextColor(10);
     cout<<"   "<<word<<"   ";
-    SetConsoleTextAttribute(color,15);
+    setTextColor(15);
     gotoXY(58,5);
     cout<<"Diem: ";
-    SetConsoleTextAttribute(color,12);
+    setTextColor(12);
     cout<<pointLevel;
-    SetConsoleTextAttribute(color,15);
+    setTextColor(15);
     cout<<endl;
     gotoXY(28,5);
     cout<<"GOI Y";
-    SetConsoleTextAttribute(color,14);
+    setTextColor(14);
     for (int i=0;i<=9;i++)
         {
             gotoXY(30-(suggetWord[i].size())/2,6+i);
@@ -91,7 +89,7 @@ void printDetails (int level,string typeOfWord, string word, int pointForGuess[1
             else
                 cout<<endl;
         }
-    SetConsoleTextAttribute(color,15);
+    setTextColor(15);
     cout<<endl;
     int pointForGuessTem[10];
     for (int i=1;i<=9;i++)
@@ -110,16 +108,85 @@ void printDetails (int level,string typeOfWord, string word, int pointForGuess[1
         gotoXY(3,i+6);
         if (boolPoint[pointForGuessTem[i]]==false)
         {
-            SetConsoleTextAttribute(color,10);
+            setTextColor(10);
             cout<<pointForGuessTem[i]<<endl;
         }
         else
         {
-            SetConsoleTextAttribute(color,12);
+            setTextColor(12);
             cout<<pointForGuessTem[i]<<endl;
         }
     }
-    SetConsoleTextAttribute(color,15);
+    setTextColor(15);
     cout<<endl;
 }
 
+void printStartScreen ()
+{
+    label:ShowCur(false);
+    string startScreenOptions[3]={"New game","Help","Exit"};
+    bool isRunning = true, isGetOption=false;
+    int getOption=99;
+    if (isRunning)
+        {
+            setTextColor(63);
+            gotoXY(20,10);
+            cout<<startScreenOptions[0];
+            setTextColor(15);
+            gotoXY(20,11);
+            cout<<startScreenOptions[1];
+            gotoXY(20,12);
+            cout<<startScreenOptions[2];
+            while (!isGetOption)
+            {
+                if (kbhit())
+                {
+                    char c=getch();
+                    if (c==13)
+                        {
+                            if (getOption%3==0)
+                                isGetOption=true;
+                            if (getOption%3==1)
+                            {
+                                system("cls");
+                                cout<<"hihi";
+                                cin.get();
+                                system("cls");
+                                goto label;
+                            }
+                            if (getOption%3==2)
+                                exit(0);
+                        }
+                    if (c==-32)
+                    {
+                        c=getch();
+                        if (c==80)
+                            {
+                                setTextColor(15);
+                                gotoXY(20,10+getOption%3);
+                                cout<<startScreenOptions[getOption%3];
+                                getOption++;
+                                setTextColor(63);
+                                gotoXY(20,10+getOption%3);
+                                cout<<startScreenOptions[getOption%3];
+                                setTextColor(15);
+                            }
+                        else
+                            if (c==72)
+                                {
+                                    setTextColor(15);
+                                    gotoXY(20,10+getOption%3);
+                                    cout<<startScreenOptions[getOption%3];
+                                    getOption--;
+                                    setTextColor(63);
+                                    gotoXY(20,10+getOption%3);
+                                    cout<<startScreenOptions[getOption%3];
+                                    setTextColor(15);
+                                }
+                    }
+                }
+            }
+        }
+        system("cls");
+        setTextColor(15);
+}
