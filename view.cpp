@@ -60,16 +60,16 @@ void printBackground ()
     gotoXY(55,16);
     cout<<(char) 202;
 }
-void printDetails (int level,string typeOfWord, string word, int pointForGuess[10], bool boolPointForGuess[10], string suggetWord[10], bool boolSuggetWord[10],int pointLevel, bool boolPoint[10])
+void printDetails (int level,string typeOfKeyWord, string word, int guessPoint[10], bool boolGuessPoint[10], string suggetWord[10], bool boolSuggetWord[10],int pointLevel, bool boolPoint[10])
 {
     printBackground();
     gotoXY(28,0);
     cout<<"VONG: "<<level<<endl;
-    gotoXY(4-(typeOfWord.size())/2,5);
+    gotoXY(4-(typeOfKeyWord.size())/2,5);
     setTextColor(15);
-    cout<<typeOfWord;
-    gotoXY(27-(word.size())/2,3);
-    setTextColor(10);
+    cout<<typeOfKeyWord;
+    gotoXY(25-(word.size())/2,3);
+    setTextColor(11);
     cout<<"   "<<word<<"   ";
     setTextColor(15);
     gotoXY(58,5);
@@ -91,30 +91,30 @@ void printDetails (int level,string typeOfWord, string word, int pointForGuess[1
         }
     setTextColor(15);
     cout<<endl;
-    int pointForGuessTem[10];
+    int guessPointTem[10];
     for (int i=1;i<=9;i++)
     {
-        pointForGuessTem[i]=pointForGuess[i];
+        guessPointTem[i]=guessPoint[i];
         gotoXY(58,6+i);
         cout<<"So "<<i;
-        if (boolPointForGuess[i]==true)
-            cout<<": "<<pointForGuess[i]<<endl;
+        if (boolGuessPoint[i]==true)
+            cout<<": "<<guessPoint[i]<<endl;
         else
             cout<<endl;
     }
-    sort(pointForGuessTem+1,pointForGuessTem+10);
+    sort(guessPointTem+1,guessPointTem+10);
     for (int i=1;i<=9;i++)
     {
         gotoXY(3,i+6);
-        if (boolPoint[pointForGuessTem[i]]==false)
+        if (boolPoint[guessPointTem[i]]==false)
         {
             setTextColor(10);
-            cout<<pointForGuessTem[i]<<endl;
+            cout<<guessPointTem[i]<<endl;
         }
         else
         {
             setTextColor(12);
-            cout<<pointForGuessTem[i]<<endl;
+            cout<<guessPointTem[i]<<endl;
         }
     }
     setTextColor(15);
@@ -149,7 +149,10 @@ void printStartScreen ()
                             if (getOption%3==1)
                             {
                                 system("cls");
-                                cout<<"hihi";
+                                cout<<"Game co 5 vong choi. Trong moi vong choi, nguoi choi se phai doan mot tu khoa "<<endl
+                                    <<"thong qua cac goi y. Co tat ca 9 goi y, nguoi choi se dung diem de doi lay goi"<<endl
+                                    <<"y, cang mua nhieu goi y, diem se cang it di. Dung cac phim mui ten de chon goi"<<endl
+                                    <<"y hoac tra loi tu khoa.";
                                 cin.get();
                                 system("cls");
                                 goto label;
