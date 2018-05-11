@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1526004546 source:c:\users\ccne\documents\guessit\controller.cpp
+	"models.h"
+	"view.h"
+
+1526004623 c:\users\ccne\documents\guessit\models.h
+	<iostream>
+	<fstream>
+	<windows.h>
+	<cstdlib>
+	<ctime>
+	<string>
+	<algorithm>
+	<conio.h>
+
+1526003772 c:\users\ccne\documents\guessit\view.h
+	"models.h"
+
+1526004546 source:c:\users\ccne\documents\guessit\models.cpp
+	"models.h"
+
+1526002766 source:c:\users\ccne\documents\guessit\view.cpp
+	"view.h"
+
